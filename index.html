@@ -66,9 +66,25 @@ html,body{overflow-x:hidden}.section,.band,.doctor,.story,.contact,.reviews,.cta
 .hero-image:after,.doctor-media:after,.story-media:after{content:"";position:absolute;inset:auto 8% 0;height:35%;background:linear-gradient(to top,rgba(255,255,255,.22),transparent);pointer-events:none;z-index:-1}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal,.hero-copy,.hero-image img{opacity:1!important;transform:none!important;animation:none!important;transition:none!important}.floating-whatsapp{animation:none!important}*,*:before,*:after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}}
 .preloader{position:fixed;inset:0;z-index:300;background:var(--paper);display:grid;place-items:center;opacity:1;visibility:visible;transition:opacity .55s ease,visibility .55s ease}.preloader.loaded{opacity:0;visibility:hidden;pointer-events:none}.preloader img{width:min(220px,56vw);height:auto;display:block;animation:preloadLogo .9s ease both}.preloader span{position:absolute;width:90px;height:1px;background:var(--gold);bottom:calc(50% - 82px);transform-origin:left;animation:preloadLine 1.2s ease infinite}@keyframes preloadLogo{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:none}}@keyframes preloadLine{0%{transform:scaleX(0);opacity:.35}50%{transform:scaleX(1);opacity:1}100%{transform:scaleX(0);opacity:.35}}@media(prefers-reduced-motion:reduce){.preloader img,.preloader span{animation:none!important}}
+/* First-visit translation banner (RU/AR visitors) — offers English as an optional translation */
+.lang-banner{position:fixed;left:0;right:0;top:var(--header);z-index:70;display:none;background:#34484a;color:#fff;border-bottom:1px solid rgba(255,255,255,.15);box-shadow:0 10px 24px rgba(40,52,58,.12)}
+.lang-banner.show{display:block;animation:langBannerIn .35s cubic-bezier(.2,.8,.2,1) both}
+@keyframes langBannerIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+.lang-banner-inner{width:min(var(--max),calc(100% - 48px));margin-inline:auto;min-height:52px;display:flex;align-items:center;gap:16px;padding:10px 0;flex-wrap:wrap}
+.lang-banner-text{font-size:12px;letter-spacing:.02em;color:#eef2ef;flex:1 1 240px}
+.lang-banner-actions{display:flex;align-items:center;gap:8px;margin-left:auto}
+.lang-banner-accept{border:1px solid var(--gold);background:var(--gold);color:#fff;padding:10px 16px;font-size:9px;letter-spacing:.12em;text-transform:uppercase;min-height:38px}
+.lang-banner-accept:hover{transform:translateY(-1px)}
+.lang-banner-dismiss{border:1px solid rgba(255,255,255,.4);background:transparent;color:#fff;width:38px;height:38px;font-size:16px;line-height:1;display:grid;place-items:center}
+.lang-banner-dismiss:hover{background:rgba(255,255,255,.1)}
+.lang-banner-accept:focus-visible,.lang-banner-dismiss:focus-visible{outline:2px solid #fff;outline-offset:2px}
+[dir=rtl] .lang-banner-actions{margin-left:0;margin-right:auto}
+@media(max-width:560px){.lang-banner-inner{width:calc(100% - 28px)}.lang-banner-text{flex-basis:100%}}
+@media(prefers-reduced-motion:reduce){.lang-banner.show{animation:none!important}}
 </style></head><body><div aria-label="Loading website" class="preloader" id="preloader"><img alt="Dr. Shrinath Barathan" src="img/logo/dr-logo.png"/><span></span></div>
 <div class="top"><span data-k="top"></span><span class="top-address">New 24, Old 798, 1st Floor, Jeevanandam Salai, Landmark: Opposite Sivan Park, Chennai</span></div>
 <header class="header"><nav class="nav wrap" aria-label="Primary"><a aria-label="Dr. Shrinath Barathan — Home" class="brand brand-logo" href="#home"><img alt="Dr. Shrinath Barathan, MD" class="site-logo" height="64" src="img/logo/dr-logo.png" width="225"/></a><div class="menu"><a data-k="home" href="#home"></a><a data-k="adv" href="#advantage"></a><a data-k="about" href="#doctor"></a><a data-k="specialties" href="#specialties"></a><a data-k="membership" href="#contact"></a></div><div class="nav-actions"><div class="lang" role="group" aria-label="Language"><button class="active" data-lang="en" type="button" aria-pressed="true">EN</button><button data-lang="ru" type="button" aria-pressed="false">RU</button><button data-lang="ar" type="button" aria-pressed="false">AR</button></div><a class="outline" data-k="consult" href="#contact"></a><button aria-controls="site-menu" aria-expanded="false" aria-label="Open navigation menu" class="mobile-menu" id="mobileMenu" type="button">☰</button></div></nav></header>
+<div class="lang-banner" id="langBanner" role="region" aria-live="polite" aria-label="Language suggestion" hidden><div class="lang-banner-inner"><span class="lang-banner-text" id="langBannerText"></span><div class="lang-banner-actions"><button class="lang-banner-accept" id="langBannerAccept" type="button">English</button><button class="lang-banner-dismiss" id="langBannerDismiss" type="button" aria-label="Dismiss">✕</button></div></div></div>
 <main id="home">
 <section class="hero reveal"><div class="hero-copy"><div><div class="eyebrow" data-k="hero_eye"></div><h1 data-k="hero_title"></h1><p data-k="hero_text"></p><div class="actions"><a class="btn primary" data-k="hero_btn" href="#contact"></a><a class="btn" data-k="about" href="#doctor"></a></div></div></div><div class="hero-image"><img alt="Dr. Shrinath Barathan in a professional medical portrait" loading="eager" src="img/dsc5612-2-optimised.webp"/></div></section>
 <section class="band reveal" id="advantage"><div class="wrap band-grid"><div><div class="eyebrow" data-k="adv_eye"></div><p class="band-copy" data-k="adv_intro"></p></div><div class="benefits"><div class="benefit"><b data-k="b1"></b><span data-k="b1d"></span></div><div class="benefit"><b data-k="b2"></b><span data-k="b2d"></span></div><div class="benefit"><b data-k="b3"></b><span data-k="b3d"></span></div><div class="benefit"><b data-k="b4"></b><span data-k="b4d"></span></div><div class="benefit"><b data-k="b5"></b><span data-k="b5d"></span></div></div></div></section>
@@ -153,6 +169,52 @@ Object.keys(REVIEW_I18N).forEach(lang=>Object.assign(T[lang],REVIEW_I18N[lang]))
 // Project-specific Chennai address: keep the supplied address consistent in all languages.
 Object.keys(T).forEach(lang=>{T[lang].address_v='New 24, Old 798, 1st Floor, Jeevanandam Salai, Landmark: Opposite Sivan Park, Chennai';T[lang].top=lang==='en'?'PRIVATE MEMBERSHIP-BASED MEDICINE • CHENNAI':lang==='ru'?'ЧАСТНАЯ МЕДИЦИНА ПО ЧЛЕНСТВУ • ЧЕННАИ':'رعاية طبية خاصة بنظام العضوية • تشيناي';});
 
+/* ==========================================================================
+   Dynamic geo + browser-language localization
+   - Russian-speaking visitors  -> land on RU, offered EN (RU/EN switcher)
+   - Arabic-country visitors     -> land on AR, offered EN (AR/EN switcher)
+   - Everyone else               -> land on EN only (no RU/AR shown)
+   Detection order (client-side): explicit country override (set by your
+   server/CDN, e.g. window.__VISITOR_COUNTRY__ from Cloudflare CF-IPCountry)
+   -> browser language -> timezone as a geo proxy.
+   ========================================================================== */
+const LANG_PROFILES={ru:{langs:['ru','en'],default:'ru'},ar:{langs:['ar','en'],default:'ar'},en:{langs:['en'],default:'en'}};
+const RU_COUNTRIES=['RU','BY','KZ','KG','TJ','UZ','TM','AM','AZ','MD'];
+const AR_COUNTRIES=['SA','AE','QA','KW','BH','OM','IQ','JO','LB','SY','YE','EG','SD','LY','TN','DZ','MA','MR','PS','DJ','SO','KM','TD'];
+const EN_COUNTRIES=['US','GB','CA','AU','NZ','IE','ZA','IN','SG','PH','NG','KE','GH','JM','TT'];
+const RU_TZ=['moscow','simferopol','kaliningrad','volgograd','kirov','astrakhan','saratov','ulyanovsk','samara','yekaterinburg','omsk','novosibirsk','barnaul','tomsk','novokuznetsk','krasnoyarsk','irkutsk','chita','yakutsk','khandyga','ust-nera','vladivostok','magadan','sakhalin','srednekolymsk','kamchatka','anadyr','minsk','almaty','qostanay','aqtobe','atyrau','oral','bishkek','tashkent','samarkand','dushanbe','ashgabat','yerevan','baku'];
+const AR_TZ=['riyadh','dubai','qatar','kuwait','bahrain','muscat','baghdad','amman','beirut','damascus','aden','cairo','khartoum','tripoli','tunis','algiers','casablanca','el_aaiun','gaza','hebron','nouakchott','djibouti','mogadishu','ndjamena'];
+
+function detectProfile(){
+  // 1) Explicit server/CDN geo, if provided (most reliable "geo" signal on a static page)
+  let cc='';
+  try{cc=String(window.__VISITOR_COUNTRY__||(document.querySelector('meta[name="geo-country"]')||{}).content||'').trim().toUpperCase();}catch{}
+  if(cc){
+    if(AR_COUNTRIES.includes(cc))return 'ar';
+    if(RU_COUNTRIES.includes(cc))return 'ru';
+    if(EN_COUNTRIES.includes(cc))return 'en';
+  }
+  // 2) Browser language(s)
+  let langs=[];
+  try{langs=((navigator.languages&&navigator.languages.length)?navigator.languages:[navigator.language||navigator.userLanguage||'en']).map(l=>String(l).toLowerCase());}catch{langs=['en'];}
+  if(langs.some(l=>l.startsWith('ru')))return 'ru';
+  if(langs.some(l=>l.startsWith('ar')))return 'ar';
+  // 3) Timezone as a geo proxy (catches Arabic/Russian-country visitors on a neutral browser)
+  let tz='';
+  try{tz=(Intl.DateTimeFormat().resolvedOptions().timeZone||'').toLowerCase();}catch{}
+  if(tz){
+    if(AR_TZ.some(k=>tz.includes(k)))return 'ar';
+    if(RU_TZ.some(k=>tz.includes(k)))return 'ru';
+  }
+  // 4) Default
+  return 'en';
+}
+
+const BANNER={
+ ru:{text:'Этот сайт также доступен на английском языке.',accept:'Читать на английском',dismiss:'Закрыть'},
+ ar:{text:'هذا الموقع متاح أيضاً باللغة الإنجليزية.',accept:'عرض بالإنجليزية',dismiss:'إغلاق'}
+};
+
 const $=(sel,root=document)=>root.querySelector(sel);
 const $$=(sel,root=document)=>Array.from(root.querySelectorAll(sel));
 
@@ -160,9 +222,41 @@ function renderTreatments(lang){const box=$('#treatments');if(!box)return;box.re
 function escapeHtml(value){const div=document.createElement('div');div.textContent=value;return div.innerHTML;}
 function setLanguage(lang){const d=T[lang]||T.en;document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';$$('[data-k]').forEach(el=>{const key=el.dataset.k;if(d[key]!==undefined)el.textContent=d[key];});$$('.lang button').forEach(b=>{const active=b.dataset.lang===lang;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active));});renderTreatments(lang);try{localStorage.setItem('drb-lang',lang)}catch{};}
 
+/* Show only the language buttons relevant to the visitor's profile (RU/EN, AR/EN or EN) */
+function applyLangOptions(profile){
+  const allowed=(LANG_PROFILES[profile]||LANG_PROFILES.en).langs;
+  $$('.lang button').forEach(btn=>{
+    const show=allowed.includes(btn.dataset.lang);
+    btn.hidden=!show;
+    btn.style.display=show?'':'none';
+    btn.disabled=!show;
+    btn.setAttribute('aria-hidden',String(!show));
+  });
+  return allowed;
+}
+
+/* First-visit translation banner helpers */
+function markBannerSeen(){try{localStorage.setItem('drb-banner-seen','1')}catch{}}
+function hideLangBanner(){const el=$('#langBanner');if(el){el.classList.remove('show');el.hidden=true;}}
+function showLangBanner(){const el=$('#langBanner');if(el){el.hidden=false;requestAnimationFrame(()=>el.classList.add('show'));}}
+function fillBanner(profile){const b=BANNER[profile];if(!b)return;const t=$('#langBannerText'),a=$('#langBannerAccept'),d=$('#langBannerDismiss');if(t)t.textContent=b.text;if(a)a.textContent=b.accept;if(d)d.setAttribute('aria-label',b.dismiss);}
+function initLangBanner(){const a=$('#langBannerAccept'),d=$('#langBannerDismiss');if(a)a.addEventListener('click',()=>{setLanguage('en');markBannerSeen();hideLangBanner();});if(d)d.addEventListener('click',()=>{markBannerSeen();hideLangBanner();});}
+function maybeShowTranslationBanner(profile,current){if(profile==='en'||current==='en')return;let seen;try{seen=localStorage.getItem('drb-banner-seen')}catch{}if(seen)return;fillBanner(profile);showLangBanner();}
+
+/* Detect profile, restrict the switcher, choose the landing language, offer EN when relevant */
+function initLocalization(){
+  const profile=detectProfile();
+  const conf=LANG_PROFILES[profile]||LANG_PROFILES.en;
+  applyLangOptions(profile);
+  let stored;try{stored=localStorage.getItem('drb-lang')}catch{}
+  const landing=(stored&&conf.langs.includes(stored))?stored:conf.default;
+  setLanguage(landing);
+  maybeShowTranslationBanner(profile,landing);
+}
+
 function initNavigation(){const menu=$('.menu'),toggle=$('#mobileMenu');if(!menu||!toggle)return;const close=()=>{menu.classList.remove('open');toggle.setAttribute('aria-expanded','false');toggle.textContent='☰';};toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-controls','site-menu');menu.id='site-menu';toggle.addEventListener('click',()=>{const open=menu.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));toggle.textContent=open?'×':'☰';});$$('.menu a').forEach(link=>link.addEventListener('click',close));document.addEventListener('keydown',e=>{if(e.key==='Escape')close();});window.addEventListener('resize',()=>{if(window.innerWidth>820)close();},{passive:true});}
 
-function initLanguages(){$$('.lang button').forEach(button=>button.addEventListener('click',()=>setLanguage(button.dataset.lang)));}
+function initLanguages(){$$('.lang button').forEach(button=>button.addEventListener('click',()=>{if(button.disabled)return;setLanguage(button.dataset.lang);markBannerSeen();hideLangBanner();}));}
 
 function initFAQ(){$$('.faq-q').forEach((button,index)=>{const item=button.closest('.faq-item');const answer=item?.querySelector('.faq-a');const id=`faq-answer-${index+1}`;if(answer){answer.id=id;button.setAttribute('aria-controls',id);button.setAttribute('aria-expanded','false');}button.addEventListener('click',()=>{const willOpen=!item.classList.contains('open');$$('.faq-item').forEach(other=>{if(other!==item){other.classList.remove('open');other.querySelector('.faq-q')?.setAttribute('aria-expanded','false');}});item.classList.toggle('open',willOpen);button.setAttribute('aria-expanded',String(willOpen));});});}
 
@@ -184,6 +278,6 @@ function initHeader(){const header=$('.header');if(!header)return;const update=(
 
 function initDate(){const date=$('#date');if(!date)return;const today=new Date();const iso=new Date(today.getTime()-today.getTimezoneOffset()*60000).toISOString().slice(0,10);date.min=iso;}
 
-document.addEventListener('DOMContentLoaded',()=>{initLanguages();initNavigation();initFAQ();initModal();initHeader();initDate();setLanguage((()=>{try{return localStorage.getItem('drb-lang')||'en'}catch{return'en'}})());observeReveals();initTextReveal();initActiveNavigation();const preloader=$('#preloader');if(preloader){let finished=false;const finish=()=>{if(finished)return;finished=true;preloader.classList.add('loaded');setTimeout(()=>preloader.remove(),650);};if(document.readyState==='complete')finish();else window.addEventListener('load',finish,{once:true});setTimeout(finish,2200);}});
+document.addEventListener('DOMContentLoaded',()=>{initLanguages();initLangBanner();initNavigation();initFAQ();initModal();initHeader();initDate();initLocalization();observeReveals();initTextReveal();initActiveNavigation();const preloader=$('#preloader');if(preloader){let finished=false;const finish=()=>{if(finished)return;finished=true;preloader.classList.add('loaded');setTimeout(()=>preloader.remove(),650);};if(document.readyState==='complete')finish();else window.addEventListener('load',finish,{once:true});setTimeout(finish,2200);}});
 </script>
 </body></html>
