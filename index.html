@@ -244,7 +244,26 @@ function initLangBanner(){const a=$('#langBannerAccept'),d=$('#langBannerDismiss
 function maybeShowTranslationBanner(profile,current){if(profile==='en'||current==='en')return;let seen;try{seen=localStorage.getItem('drb-banner-seen')}catch{}if(seen)return;fillBanner(profile);showLangBanner();}
 
 /* Detect profile, restrict the switcher, choose the landing language, offer EN when relevant */
+/* Read an optional ?lang=xx (or #lang=xx) override so any language can be previewed directly by URL */
+function getForcedLang(){
+  let v='';
+  try{v=(new URLSearchParams(window.location.search).get('lang')||'').toLowerCase().trim();}catch{}
+  if(!v){try{const m=(window.location.hash||'').match(/lang=([a-z]{2})/i);if(m)v=m[1].toLowerCase();}catch{}}
+  return (v==='ar'||v==='ru'||v==='en')?v:'';
+}
+/* Which profile owns a given language (so the switcher shows the matching set) */
+function profileForLang(lang){return lang==='ar'?'ar':lang==='ru'?'ru':'en';}
+
 function initLocalization(){
+  const forced=getForcedLang();
+  if(forced){
+    // URL override wins: force the language, show its profile's switcher, and remember the choice.
+    const profile=profileForLang(forced);
+    applyLangOptions(profile);
+    setLanguage(forced);
+    markBannerSeen();hideLangBanner();
+    return;
+  }
   const profile=detectProfile();
   const conf=LANG_PROFILES[profile]||LANG_PROFILES.en;
   applyLangOptions(profile);
